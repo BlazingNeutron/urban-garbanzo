@@ -39,15 +39,14 @@ func calc_offset(sprite : Sprite2D, path : Path2D) -> float:
 	return distance
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("touch"):
+	if get_global_mouse_position().distance_to(sprite.global_position) < 60:
 		touching = true
+	if event.is_action_pressed("touch"):
+		dragging = true
 	elif event.is_action_released("touch"):
-		touching = false
-	if event is InputEventMouseMotion and touching:
-		if get_global_mouse_position().distance_to(sprite.global_position) < 60:
-			var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
-			var goal_direction = sprite.global_position.direction_to(path.curve.get_point_position(1))
-			if pull_direction.dot(goal_direction) > 0:
-				dragging = true
-		else:
-			touching = false
+		dragging = false
+	if event is InputEventMouseMotion and dragging:
+		var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
+		var goal_direction = sprite.global_position.direction_to(path.curve.get_point_position(1))
+		if pull_direction.dot(goal_direction) > 0:
+			dragging = true
