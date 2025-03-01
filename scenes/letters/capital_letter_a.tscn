@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf1c8wyj844nu"]
+
+[ext_resource type="PackedScene" uid="uid://4gktlgtprxfr" path="res://scenes/letter.tscn" id="1_fhq2p"]
+[ext_resource type="Texture2D" uid="uid://c7qcdvq3kvg3y" path="res://assets/images/grab-indicator.png" id="2_idmqx"]
+
+[sub_resource type="Curve2D" id="Curve2D_sx2wh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 430, 94, 0, 0, 0, 0, 291, 410)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_clm4h"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 430, 94, 0, 0, 0, 0, 585, 407)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_8s1tg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 300, 217, 0, 0, 0, 0, 463, 218)
+}
+point_count = 2
+
+[node name="CapitalLetterA" type="Node2D"]
+
+[node name="Letter" parent="." instance=ExtResource("1_fhq2p")]
+
+[node name="LetterPath" type="Path2D" parent="Letter/LetterPaths" index="0"]
+curve = SubResource("Curve2D_sx2wh")
+
+[node name="PathFollower" type="PathFollow2D" parent="Letter/LetterPaths/LetterPath"]
+visible = false
+position = Vector2(430, 94)
+rotation = 1.9852
+loop = false
+
+[node name="PathGrabberSprite" type="Sprite2D" parent="Letter/LetterPaths/LetterPath/PathFollower"]
+texture = ExtResource("2_idmqx")
+
+[node name="LetterPath2" type="Path2D" parent="Letter/LetterPaths" index="1"]
+curve = SubResource("Curve2D_clm4h")
+
+[node name="PathFollower" type="PathFollow2D" parent="Letter/LetterPaths/LetterPath2"]
+visible = false
+position = Vector2(430, 94)
+rotation = 1.11099
+loop = false
+
+[node name="PathGrabberSprite" type="Sprite2D" parent="Letter/LetterPaths/LetterPath2/PathFollower"]
+texture = ExtResource("2_idmqx")
+
+[node name="LetterPath3" type="Path2D" parent="Letter/LetterPaths" index="2"]
+position = Vector2(75, 44)
+curve = SubResource("Curve2D_8s1tg")
+
+[node name="PathFollower" type="PathFollow2D" parent="Letter/LetterPaths/LetterPath3"]
+visible = false
+position = Vector2(300, 217)
+rotation = 0.00613489
+loop = false
+
+[node name="PathGrabberSprite" type="Sprite2D" parent="Letter/LetterPaths/LetterPath3/PathFollower"]
+texture = ExtResource("2_idmqx")
+
+[editable path="Letter"]

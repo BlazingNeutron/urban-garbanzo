@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctpin31ahbdpr"]
+
+[ext_resource type="Texture2D" uid="uid://c7qcdvq3kvg3y" path="res://assets/images/grab-indicator.png" id="1_e0nmi"]
+
+[sub_resource type="Curve2D" id="Curve2D_wfm7r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 431, 85, 0, 0, 0, 0, 291, 410)
+}
+point_count = 2
+
+[node name="LetterPath" type="Path2D"]
+curve = SubResource("Curve2D_wfm7r")
+
+[node name="PathFollower" type="PathFollow2D" parent="."]
+visible = false
+position = Vector2(431, 85)
+rotation = 1.97754
+loop = false
+
+[node name="PathGrabberSprite" type="Sprite2D" parent="PathFollower"]
+texture = ExtResource("1_e0nmi")
