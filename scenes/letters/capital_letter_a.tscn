@@ -1,23 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf1c8wyj844nu"]
+[gd_scene load_steps=10 format=3 uid="uid://bf1c8wyj844nu"]
 
 [ext_resource type="PackedScene" uid="uid://4gktlgtprxfr" path="res://scenes/letter.tscn" id="1_fhq2p"]
 [ext_resource type="Texture2D" uid="uid://c7qcdvq3kvg3y" path="res://assets/images/grab-indicator.png" id="2_idmqx"]
+[ext_resource type="Script" path="res://scripts/letter_path.gd" id="3_hg2tj"]
+[ext_resource type="Texture2D" uid="uid://c7w11x3h84ksb" path="res://assets/images/dashed.png" id="3_r2by1"]
+[ext_resource type="Texture2D" uid="uid://c533vh6peh46i" path="res://assets/images/end-dot.png" id="4_r62a0"]
 
-[sub_resource type="Curve2D" id="Curve2D_sx2wh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e8a5"]
+
+[sub_resource type="Curve2D" id="Curve2D_6qong"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 430, 94, 0, 0, 0, 0, 291, 410)
+"points": PackedVector2Array(0, 0, 0, 0, 449, 131, 0, 0, 0, 0, 315, 499)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_clm4h"]
+[sub_resource type="Curve2D" id="Curve2D_b16jj"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 430, 94, 0, 0, 0, 0, 585, 407)
+"points": PackedVector2Array(0, 0, 0, 0, 475, 132, 0, 0, 0, 0, 608, 500)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_8s1tg"]
+[sub_resource type="Curve2D" id="Curve2D_0gk2w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 300, 217, 0, 0, 0, 0, 463, 218)
+"points": PackedVector2Array(0, 0, 0, 0, 384, 362, 0, 0, 0, 0, 539, 363)
 }
 point_count = 2
 
@@ -25,38 +30,78 @@ point_count = 2
 
 [node name="Letter" parent="." instance=ExtResource("1_fhq2p")]
 
+[node name="RichTextLabel" parent="Letter" index="1"]
+offset_left = 246.0
+offset_top = -51.0
+offset_right = 752.0
+offset_bottom = 676.0
+theme_override_font_sizes/bold_font_size = 533
+text = "     [b]A[/b]"
+
 [node name="LetterPath" type="Path2D" parent="Letter/LetterPaths" index="0"]
-curve = SubResource("Curve2D_sx2wh")
+material = SubResource("ShaderMaterial_0e8a5")
+curve = SubResource("Curve2D_6qong")
+script = ExtResource("3_hg2tj")
+
+[node name="Dash" type="Line2D" parent="Letter/LetterPaths/LetterPath"]
+texture_repeat = 2
+texture = ExtResource("3_r2by1")
+texture_mode = 1
+
+[node name="EndPoint" type="Sprite2D" parent="Letter/LetterPaths/LetterPath"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_r62a0")
 
 [node name="PathFollower" type="PathFollow2D" parent="Letter/LetterPaths/LetterPath"]
 visible = false
-position = Vector2(430, 94)
-rotation = 1.9852
+position = Vector2(449, 131)
+rotation = 1.92
 loop = false
 
 [node name="PathGrabberSprite" type="Sprite2D" parent="Letter/LetterPaths/LetterPath/PathFollower"]
 texture = ExtResource("2_idmqx")
 
 [node name="LetterPath2" type="Path2D" parent="Letter/LetterPaths" index="1"]
-curve = SubResource("Curve2D_clm4h")
+material = SubResource("ShaderMaterial_0e8a5")
+curve = SubResource("Curve2D_b16jj")
+script = ExtResource("3_hg2tj")
+
+[node name="Dash" type="Line2D" parent="Letter/LetterPaths/LetterPath2"]
+texture_repeat = 2
+texture = ExtResource("3_r2by1")
+texture_mode = 1
+
+[node name="EndPoint" type="Sprite2D" parent="Letter/LetterPaths/LetterPath2"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_r62a0")
 
 [node name="PathFollower" type="PathFollow2D" parent="Letter/LetterPaths/LetterPath2"]
 visible = false
-position = Vector2(430, 94)
-rotation = 1.11099
+position = Vector2(475, 132)
+rotation = 1.22399
 loop = false
 
 [node name="PathGrabberSprite" type="Sprite2D" parent="Letter/LetterPaths/LetterPath2/PathFollower"]
 texture = ExtResource("2_idmqx")
 
 [node name="LetterPath3" type="Path2D" parent="Letter/LetterPaths" index="2"]
-position = Vector2(75, 44)
-curve = SubResource("Curve2D_8s1tg")
+material = SubResource("ShaderMaterial_0e8a5")
+curve = SubResource("Curve2D_0gk2w")
+script = ExtResource("3_hg2tj")
+
+[node name="Dash" type="Line2D" parent="Letter/LetterPaths/LetterPath3"]
+texture_repeat = 2
+texture = ExtResource("3_r2by1")
+texture_mode = 1
+
+[node name="EndPoint" type="Sprite2D" parent="Letter/LetterPaths/LetterPath3"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_r62a0")
 
 [node name="PathFollower" type="PathFollow2D" parent="Letter/LetterPaths/LetterPath3"]
 visible = false
-position = Vector2(300, 217)
-rotation = 0.00613489
+position = Vector2(384, 362)
+rotation = 0.00645152
 loop = false
 
 [node name="PathGrabberSprite" type="Sprite2D" parent="Letter/LetterPaths/LetterPath3/PathFollower"]

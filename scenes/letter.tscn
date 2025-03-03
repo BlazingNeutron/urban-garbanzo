@@ -5,8 +5,18 @@
 [node name="Letter" type="Node2D"]
 script = ExtResource("1_werx4")
 
-[node name="LetterPaths" type="Node2D" parent="."]
-
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 194.0
+offset_bottom = 390.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 286
+bbcode_enabled = true
+text = "[b]A[/b]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="LetterPaths" type="Node2D" parent="."]

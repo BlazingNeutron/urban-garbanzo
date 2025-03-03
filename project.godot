@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main_stage.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 touch={
@@ -26,3 +30,7 @@ touch={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

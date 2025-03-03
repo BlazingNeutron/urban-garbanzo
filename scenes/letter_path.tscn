@@ -1,20 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctpin31ahbdpr"]
+[gd_scene load_steps=7 format=3 uid="uid://ctpin31ahbdpr"]
 
+[ext_resource type="Script" path="res://scripts/letter_path.gd" id="1_2i6y2"]
 [ext_resource type="Texture2D" uid="uid://c7qcdvq3kvg3y" path="res://assets/images/grab-indicator.png" id="1_e0nmi"]
+[ext_resource type="Texture2D" uid="uid://c7w11x3h84ksb" path="res://assets/images/dashed.png" id="2_vbs8d"]
+[ext_resource type="Texture2D" uid="uid://c533vh6peh46i" path="res://assets/images/end-dot.png" id="3_ratga"]
 
-[sub_resource type="Curve2D" id="Curve2D_wfm7r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e8a5"]
+
+[sub_resource type="Curve2D" id="Curve2D_u41ii"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 431, 85, 0, 0, 0, 0, 291, 410)
+"points": PackedVector2Array(0, 0, 0, 0, 475, 132, 0, 0, 0, 0, 608, 500)
 }
 point_count = 2
 
 [node name="LetterPath" type="Path2D"]
-curve = SubResource("Curve2D_wfm7r")
+material = SubResource("ShaderMaterial_0e8a5")
+curve = SubResource("Curve2D_u41ii")
+script = ExtResource("1_2i6y2")
+
+[node name="Dash" type="Line2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_vbs8d")
+texture_mode = 1
+
+[node name="EndPoint" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_ratga")
 
 [node name="PathFollower" type="PathFollow2D" parent="."]
 visible = false
-position = Vector2(431, 85)
-rotation = 1.97754
+position = Vector2(475, 132)
+rotation = 1.22399
 loop = false
 
 [node name="PathGrabberSprite" type="Sprite2D" parent="PathFollower"]
