@@ -8,6 +8,9 @@ var letter_list = {
 		[ 
 			{
 				"scene": "capital_letter_a"
+			},
+			{
+				"scene": "capital_letter_b"
 			}
 		]
 }

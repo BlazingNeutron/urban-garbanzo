@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4gktlgtprxfr"]
 
-[ext_resource type="Script" path="res://scripts/drag.gd" id="1_werx4"]
+[ext_resource type="Script" uid="uid://drsr5lcskcqk" path="res://scripts/drag.gd" id="1_werx4"]
 
 [node name="Letter" type="Node2D"]
 script = ExtResource("1_werx4")
@@ -15,7 +15,7 @@ offset_bottom = 390.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/bold_font_size = 286
 bbcode_enabled = true
-text = "[b]A[/b]"
+text = "[b][/b]"
 fit_content = true
 autowrap_mode = 0
 

@@ -20,17 +20,17 @@ func _physics_process(delta: float) -> void:
 	var next_path_point = path.curve.get_baked_points()[curve_index]
 	var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
 	var goal_direction = sprite.global_position.direction_to(next_path_point)
-	if curve_index >= 1:
-		var not_the_goal_direction = sprite.global_position.direction_to(path.curve.get_baked_points()[curve_index - 1])
-		if pull_direction.dot(not_the_goal_direction) > 0:
-			dragging = false
-	if pull_direction.dot(goal_direction) < 0:
-		if path.curve.get_baked_points().size() > curve_index + 1:
-			var next_goal_direction = sprite.global_position.direction_to(path.curve.get_baked_points()[curve_index + 1])
-			if pull_direction.dot(next_goal_direction) > 0:
-				curve_index += 1
-	if pressed and dragging:
+	var not_the_goal_direction = sprite.global_position.direction_to(path.curve.get_baked_points()[curve_index - 1])
+
+	if pressed and dragging and pull_direction.dot(goal_direction) > 0.0:
 		path_follow.progress += calc_offset(sprite, path)
+		var baked_point = path.curve.get_closest_offset(sprite.global_position)
+		var idx = 0
+		for bakedpoint in path.curve.get_baked_points():
+			if path.curve.get_closest_offset(bakedpoint) > path_follow.progress:
+				curve_index = idx
+				break
+			idx += 1
 	if path_follow.progress_ratio >= 1.0:
 		path_follow.hide()
 		dragging = false
@@ -39,12 +39,15 @@ func _physics_process(delta: float) -> void:
 func next_path() -> void:
 	path_index += 1
 	curve_index = 1
+	pressed = false
+	dragging = false
 	if path_index >= letter_paths.get_child_count():
 		return
 	path = letter_paths.get_children()[path_index]
 	path_follow = path.get_node("PathFollower")
 	sprite = path_follow.get_node("PathGrabberSprite")
 	path_follow.show()
+	print("baked points ", path.curve.get_baked_points())
 
 func calc_offset(sprite : Sprite2D, path : Path2D) -> float:
 	var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
