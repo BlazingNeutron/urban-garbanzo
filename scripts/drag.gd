@@ -9,6 +9,7 @@ var dragging = false
 var path_follow : PathFollow2D = null
 var sprite : Sprite2D = null
 var curve_index = 1
+var line : Line2D = null
 
 func _ready() -> void:
 	path_index = -1
@@ -20,20 +21,17 @@ func _physics_process(delta: float) -> void:
 	var next_path_point = path.curve.get_baked_points()[curve_index]
 	var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
 	var goal_direction = sprite.global_position.direction_to(next_path_point)
-	var not_the_goal_direction = sprite.global_position.direction_to(path.curve.get_baked_points()[curve_index - 1])
 
 	if pressed and dragging and pull_direction.dot(goal_direction) > 0.0:
 		path_follow.progress += calc_offset(sprite, path)
-		var baked_point = path.curve.get_closest_offset(sprite.global_position)
-		var idx = 0
-		for bakedpoint in path.curve.get_baked_points():
-			if path.curve.get_closest_offset(bakedpoint) > path_follow.progress:
+		var idx = curve_index
+		for baked_point_idx in range(idx, path.curve.get_baked_points().size()):
+			if path.curve.get_closest_offset(path.curve.get_baked_points()[baked_point_idx]) > path_follow.progress:
 				curve_index = idx
 				break
+			line.add_point(path.curve.get_baked_points()[idx])
 			idx += 1
 	if path_follow.progress_ratio >= 1.0:
-		path_follow.hide()
-		dragging = false
 		next_path()
 
 func next_path() -> void:
@@ -41,13 +39,23 @@ func next_path() -> void:
 	curve_index = 1
 	pressed = false
 	dragging = false
+	line = Line2D.new()
+	line.width = 80
+	line.default_color = Color.AQUA
+	line.joint_mode = Line2D.LINE_JOINT_ROUND
+	line.begin_cap_mode = Line2D.LINE_CAP_ROUND
+	line.end_cap_mode = Line2D.LINE_CAP_ROUND
+	if path_follow != null:
+		path_follow.hide()
 	if path_index >= letter_paths.get_child_count():
 		return
 	path = letter_paths.get_children()[path_index]
+	path.add_child(line)
+	path.move_child(line, 1)
+	line.add_point(path.curve.get_baked_points()[0])
 	path_follow = path.get_node("PathFollower")
 	sprite = path_follow.get_node("PathGrabberSprite")
 	path_follow.show()
-	print("baked points ", path.curve.get_baked_points())
 
 func calc_offset(sprite : Sprite2D, path : Path2D) -> float:
 	var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
