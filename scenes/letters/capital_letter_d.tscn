@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://lmoaglboiict"]
+
+[ext_resource type="PackedScene" uid="uid://4gktlgtprxfr" path="res://scenes/letter.tscn" id="1_oosnv"]
+[ext_resource type="Script" uid="uid://snujoof1kuvo" path="res://scripts/letter_path.gd" id="2_d4w47"]
+[ext_resource type="Texture2D" uid="uid://c7w11x3h84ksb" path="res://assets/images/dashed.png" id="3_2aweq"]
+[ext_resource type="Texture2D" uid="uid://c533vh6peh46i" path="res://assets/images/end-dot.png" id="4_v6wni"]
+[ext_resource type="Texture2D" uid="uid://c7qcdvq3kvg3y" path="res://assets/images/grab-indicator.png" id="5_708ni"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v01t8"]
+
+[sub_resource type="Curve2D" id="Curve2D_35ifx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 446, 175, 0, 0, 0, 0, 446, 499)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_j3n6c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 455, 169, 1.94872, -208.513, -1.94872, 208.513, 695, 335, 0, 0, 0, 0, 452, 500)
+}
+point_count = 3
+
+[node name="Letter" instance=ExtResource("1_oosnv")]
+
+[node name="RichTextLabel" parent="." index="1"]
+offset_left = 345.0
+offset_top = -25.0
+offset_right = 773.0
+offset_bottom = 702.0
+theme_override_font_sizes/bold_font_size = 533
+text = "[b]D[/b]"
+
+[node name="LetterPath" type="Path2D" parent="LetterPaths" index="0"]
+material = SubResource("ShaderMaterial_v01t8")
+curve = SubResource("Curve2D_35ifx")
+script = ExtResource("2_d4w47")
+
+[node name="Dash" type="Line2D" parent="LetterPaths/LetterPath" index="0"]
+texture_repeat = 2
+texture = ExtResource("3_2aweq")
+texture_mode = 1
+
+[node name="EndPoint" type="Sprite2D" parent="LetterPaths/LetterPath" index="1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_v6wni")
+
+[node name="PathFollower" type="PathFollow2D" parent="LetterPaths/LetterPath" index="2"]
+visible = false
+position = Vector2(446, 175)
+rotation = 1.5708
+loop = false
+
+[node name="PathGrabberSprite" type="Sprite2D" parent="LetterPaths/LetterPath/PathFollower" index="0"]
+texture = ExtResource("5_708ni")
+
+[node name="LetterPath2" type="Path2D" parent="LetterPaths" index="1"]
+material = SubResource("ShaderMaterial_v01t8")
+curve = SubResource("Curve2D_j3n6c")
+script = ExtResource("2_d4w47")
+
+[node name="Dash" type="Line2D" parent="LetterPaths/LetterPath2" index="0"]
+texture_repeat = 2
+texture = ExtResource("3_2aweq")
+texture_mode = 1
+
+[node name="EndPoint" type="Sprite2D" parent="LetterPaths/LetterPath2" index="1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_v6wni")
+
+[node name="PathFollower" type="PathFollow2D" parent="LetterPaths/LetterPath2" index="2"]
+visible = false
+position = Vector2(455, 169)
+rotation = 0.605111
+loop = false
+
+[node name="PathGrabberSprite" type="Sprite2D" parent="LetterPaths/LetterPath2/PathFollower" index="0"]
+texture = ExtResource("5_708ni")

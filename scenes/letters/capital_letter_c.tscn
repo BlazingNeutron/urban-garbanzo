@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxex3ypv5iwa5"]
+
+[ext_resource type="PackedScene" uid="uid://4gktlgtprxfr" path="res://scenes/letter.tscn" id="1_8y2wt"]
+[ext_resource type="Script" uid="uid://snujoof1kuvo" path="res://scripts/letter_path.gd" id="2_c338b"]
+[ext_resource type="Texture2D" uid="uid://c7w11x3h84ksb" path="res://assets/images/dashed.png" id="3_7d5sx"]
+[ext_resource type="Texture2D" uid="uid://c533vh6peh46i" path="res://assets/images/end-dot.png" id="4_wce0r"]
+[ext_resource type="Texture2D" uid="uid://c7qcdvq3kvg3y" path="res://assets/images/grab-indicator.png" id="5_g5hst"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v01t8"]
+
+[sub_resource type="Curve2D" id="Curve2D_mf3et"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 725, 193, 0, -246.4, 0, 246.4, 478, 341, 0, 0, 0, 0, 723, 496)
+}
+point_count = 3
+
+[node name="Letter" instance=ExtResource("1_8y2wt")]
+
+[node name="RichTextLabel" parent="." index="1"]
+offset_left = 398.0
+offset_top = -17.0
+offset_right = 781.0
+offset_bottom = 710.0
+theme_override_font_sizes/bold_font_size = 533
+text = "[b]C[/b]"
+
+[node name="LetterPath" type="Path2D" parent="LetterPaths" index="0"]
+material = SubResource("ShaderMaterial_v01t8")
+curve = SubResource("Curve2D_mf3et")
+script = ExtResource("2_c338b")
+
+[node name="Dash" type="Line2D" parent="LetterPaths/LetterPath" index="0"]
+texture_repeat = 2
+texture = ExtResource("3_7d5sx")
+texture_mode = 1
+
+[node name="EndPoint" type="Sprite2D" parent="LetterPaths/LetterPath" index="1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_wce0r")
+
+[node name="PathFollower" type="PathFollow2D" parent="LetterPaths/LetterPath" index="2"]
+visible = false
+position = Vector2(725, 193)
+rotation = 2.60177
+loop = false
+
+[node name="PathGrabberSprite" type="Sprite2D" parent="LetterPaths/LetterPath/PathFollower" index="0"]
+texture = ExtResource("5_g5hst")

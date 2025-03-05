@@ -11,6 +11,12 @@ var letter_list = {
 			},
 			{
 				"scene": "capital_letter_b"
+			},
+			{
+				"scene": "capital_letter_c"
+			},
+			{
+				"scene": "capital_letter_d"
 			}
 		]
 }
