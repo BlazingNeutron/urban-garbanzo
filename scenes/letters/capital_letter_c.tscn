@@ -21,7 +21,6 @@ offset_left = 398.0
 offset_top = -17.0
 offset_right = 781.0
 offset_bottom = 710.0
-theme_override_font_sizes/bold_font_size = 533
 text = "[b]C[/b]"
 
 [node name="LetterPath" type="Path2D" parent="LetterPaths" index="0"]

@@ -16,7 +16,7 @@ func _ready() -> void:
 	next_path()
 
 func _physics_process(delta: float) -> void:
-	if get_global_mouse_position().distance_to(sprite.global_position) > 50:
+	if get_global_mouse_position().distance_to(sprite.global_position) > 80:
 		dragging = false
 	var next_path_point = path.curve.get_baked_points()[curve_index]
 	var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
@@ -37,8 +37,6 @@ func _physics_process(delta: float) -> void:
 func next_path() -> void:
 	path_index += 1
 	curve_index = 1
-	pressed = false
-	dragging = false
 	line = Line2D.new()
 	line.width = 80
 	line.default_color = Color.AQUA

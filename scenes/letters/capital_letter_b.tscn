@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://diva8vi78dcq4"]
+[gd_scene load_steps=12 format=3 uid="uid://diva8vi78dcq4"]
 
 [ext_resource type="PackedScene" uid="uid://4gktlgtprxfr" path="res://scenes/letter.tscn" id="1_svvq7"]
 [ext_resource type="Script" uid="uid://snujoof1kuvo" path="res://scripts/letter_path.gd" id="2_2xpwc"]
+[ext_resource type="Texture2D" uid="uid://dkhvkoyvh7bij" path="res://assets/images/capital-b.png" id="2_kohs7"]
 [ext_resource type="Texture2D" uid="uid://c7w11x3h84ksb" path="res://assets/images/dashed.png" id="3_302aa"]
 [ext_resource type="Texture2D" uid="uid://c533vh6peh46i" path="res://assets/images/end-dot.png" id="4_nxb2r"]
 [ext_resource type="Texture2D" uid="uid://c7qcdvq3kvg3y" path="res://assets/images/grab-indicator.png" id="5_3tsar"]
@@ -30,13 +31,23 @@ point_count = 3
 
 [node name="Letter" instance=ExtResource("1_svvq7")]
 
+[node name="Background" parent="." index="0"]
+offset_left = -7.00003
+offset_top = -30.0
+offset_right = 993.0
+offset_bottom = 970.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_kohs7")
+
 [node name="RichTextLabel" parent="." index="1"]
-offset_left = 250.0
-offset_top = -51.0
-offset_right = 612.0
-offset_bottom = 676.0
-theme_override_font_sizes/bold_font_size = 533
+offset_left = 643.0
+offset_top = -43.0
+offset_right = 1023.0
+offset_bottom = 684.0
 text = "[b]B[/b]"
+
+[node name="LetterPaths" parent="." index="2"]
+position = Vector2(393, 8)
 
 [node name="LetterPath" type="Path2D" parent="LetterPaths" index="0"]
 material = SubResource("ShaderMaterial_0e8a5")
