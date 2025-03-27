@@ -11,7 +11,7 @@ func _ready() -> void:
 		dash.add_point(point + position) 
 	end_point.position = curve.get_point_position(curve.point_count - 1)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if path_follower.progress_ratio >= 1.0:
 		dash.hide()
 		end_point.hide()

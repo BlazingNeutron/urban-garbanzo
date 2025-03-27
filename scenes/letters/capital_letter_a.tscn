@@ -32,10 +32,10 @@ point_count = 2
 [node name="Letter" parent="." instance=ExtResource("1_fhq2p")]
 
 [node name="Background" parent="Letter" index="0"]
-offset_left = 511.0
-offset_top = -28.0
-offset_right = 1511.0
-offset_bottom = 972.0
+offset_left = 542.0
+offset_top = -14.0
+offset_right = 1542.0
+offset_bottom = 986.0
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_4sjcs")
 

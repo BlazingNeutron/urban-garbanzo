@@ -15,15 +15,16 @@ func _ready() -> void:
 	path_index = -1
 	next_path()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if get_global_mouse_position().distance_to(sprite.global_position) > 80:
 		dragging = false
-	var next_path_point = path.curve.get_baked_points()[curve_index]
+	var relative_path_point = path.curve.get_baked_points()[curve_index]
+	var next_path_point = path.global_position + relative_path_point
 	var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
 	var goal_direction = sprite.global_position.direction_to(next_path_point)
-
+	
 	if pressed and dragging and pull_direction.dot(goal_direction) > 0.0:
-		path_follow.progress += calc_offset(sprite, path)
+		path_follow.progress += calc_offset()
 		var idx = curve_index
 		for baked_point_idx in range(idx, path.curve.get_baked_points().size()):
 			if path.curve.get_closest_offset(path.curve.get_baked_points()[baked_point_idx]) > path_follow.progress:
@@ -31,6 +32,7 @@ func _physics_process(delta: float) -> void:
 				break
 			line.add_point(path.curve.get_baked_points()[idx])
 			idx += 1
+	
 	if path_follow.progress_ratio >= 1.0:
 		next_path()
 
@@ -55,7 +57,7 @@ func next_path() -> void:
 	sprite = path_follow.get_node("PathGrabberSprite")
 	path_follow.show()
 
-func calc_offset(sprite : Sprite2D, path : Path2D) -> float:
+func calc_offset() -> float:
 	var pull_direction = sprite.global_position.direction_to(get_global_mouse_position())
 	var goal_direction = sprite.global_position.direction_to(path.curve.get_point_position(1))
 	var projected_vector = (pull_direction.dot(goal_direction)/sqrt(goal_direction.dot(goal_direction)))*goal_direction

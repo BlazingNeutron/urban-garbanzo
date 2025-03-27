@@ -26,16 +26,22 @@ var letter_index = 0
 
 func _ready() -> void:
 	letter_count = letter_list.get("letters").size()
-	letter_index = -1
-	load_next_letter()
+	letter_index = 0
+	load_letter()
 
 func _on_next_button_pressed() -> void:
-	load_next_letter()
-
-func load_next_letter() -> void:
 	letter_index += 1
 	if letter_index >= letter_count:
 		letter_index = 0
+	load_letter()
+
+func _on_prev_button_pressed() -> void:
+	letter_index -= 1
+	if letter_index < 0:
+		letter_index = letter_count - 1
+	load_letter()
+
+func load_letter() -> void:
 	var next_letter = load("res://scenes/letters/" + str(letter_list.get("letters")[letter_index].get("scene")) + ".tscn")
 	for n in letter_display.get_children():
 		letter_display.remove_child(n)

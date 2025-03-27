@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://clq1xtxb0yyne"]
+[gd_scene load_steps=4 format=3 uid="uid://clq1xtxb0yyne"]
 
 [ext_resource type="Script" uid="uid://dt0wnpoao8uaa" path="res://scripts/main_stage.gd" id="1_fq678"]
+[ext_resource type="Texture2D" uid="uid://xci1i01s10vf" path="res://assets/images/arrow-button.png" id="2_pegp3"]
+[ext_resource type="Texture2D" uid="uid://bsl6tgx71smru" path="res://assets/images/background.png" id="3_kaalw"]
 
 [node name="MainStage" type="Node2D"]
 script = ExtResource("1_fq678")
@@ -21,20 +23,45 @@ size_flags_vertical = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -45.0
-grow_horizontal = 0
-grow_vertical = 2
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 3
 
-[node name="NextButton" type="Button" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="PrevButton" type="TextureButton" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "Next"
+texture_normal = ExtResource("2_pegp3")
+flip_h = true
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NextButton" type="TextureButton" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("2_pegp3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -453.0
+offset_top = -181.0
+offset_right = 1547.0
+offset_bottom = 819.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kaalw")
 
 [node name="LetterDisplay" type="Node2D" parent="."]
 
+[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PrevButton" to="." method="_on_prev_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
