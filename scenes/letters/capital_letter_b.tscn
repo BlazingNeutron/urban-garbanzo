@@ -9,13 +9,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0e8a5"]
 
-[sub_resource type="Curve2D" id="Curve2D_478xb"]
+[sub_resource type="Curve2D" id="Curve2D_ckebo"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 352, 137, 0, 0, 0, 0, 351, 483)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_lm3dr"]
+[sub_resource type="Curve2D" id="Curve2D_mqk1x"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 399, 133, -0.476019, -87.2894, 0.476019, 87.2894, 556, 215, -3.07443, 3.5391, 3.07443, -3.5391, 401, 297)
 }
@@ -51,7 +51,7 @@ position = Vector2(393, 8)
 
 [node name="LetterPath" type="Path2D" parent="LetterPaths" index="0"]
 material = SubResource("ShaderMaterial_0e8a5")
-curve = SubResource("Curve2D_478xb")
+curve = SubResource("Curve2D_ckebo")
 script = ExtResource("2_2xpwc")
 
 [node name="Dash" type="Line2D" parent="LetterPaths/LetterPath" index="0"]
@@ -74,7 +74,7 @@ texture = ExtResource("5_3tsar")
 
 [node name="LetterPath2" type="Path2D" parent="LetterPaths" index="1"]
 material = SubResource("ShaderMaterial_0e8a5")
-curve = SubResource("Curve2D_lm3dr")
+curve = SubResource("Curve2D_mqk1x")
 script = ExtResource("2_2xpwc")
 
 [node name="Dash" type="Line2D" parent="LetterPaths/LetterPath2" index="0"]
@@ -97,7 +97,6 @@ texture = ExtResource("5_3tsar")
 
 [node name="LetterPath3" type="Path2D" parent="LetterPaths" index="2"]
 material = SubResource("ShaderMaterial_v01t8")
-position = Vector2(0, -1)
 curve = SubResource("Curve2D_kohs7")
 script = ExtResource("2_2xpwc")
 

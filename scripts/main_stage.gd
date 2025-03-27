@@ -6,18 +6,13 @@ extends Node2D
 var letter_list = {
 	"letters" : 
 		[ 
-			{
-				"scene": "capital_letter_a"
-			},
-			{
-				"scene": "capital_letter_b"
-			},
-			{
-				"scene": "capital_letter_c"
-			},
-			{
-				"scene": "capital_letter_d"
-			}
+			{ "scene": "capital_letter_a" },
+			{ "scene": "capital_letter_b" },
+			{ "scene": "capital_letter_c" },
+			{ "scene": "capital_letter_d" },
+			{ "scene": "capital_letter_e" },
+			{ "scene": "capital_letter_f" },
+			{ "scene": "capital_letter_g" }
 		]
 }
 

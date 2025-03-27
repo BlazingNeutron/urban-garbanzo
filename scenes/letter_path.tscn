@@ -8,6 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v01t8"]
 
 [sub_resource type="Curve2D" id="Curve2D_u41ii"]
+resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 53, 105, 0, 0, 0, 0, 54, 285)
 }
