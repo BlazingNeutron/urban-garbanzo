@@ -12,7 +12,11 @@ var letter_list = {
 			{ "scene": "capital_letter_d" },
 			{ "scene": "capital_letter_e" },
 			{ "scene": "capital_letter_f" },
-			{ "scene": "capital_letter_g" }
+			{ "scene": "capital_letter_g" },
+			{ "scene": "capital_letter_h" },
+			{ "scene": "capital_letter_i" },
+			{ "scene": "capital_letter_j" }
+			
 		]
 }
 
