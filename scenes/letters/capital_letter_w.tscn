@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bel1gw01km3rv"]
+
+[ext_resource type="PackedScene" uid="uid://4gktlgtprxfr" path="res://scenes/letter.tscn" id="1_y72py"]
+[ext_resource type="PackedScene" uid="uid://ctpin31ahbdpr" path="res://scenes/letter_path.tscn" id="2_dhbaa"]
+
+[sub_resource type="Curve2D" id="Curve2D_sk2kq"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 336, 147, 0, 0, 0, 0, 429, 500)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_dhbaa"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 440, 499, 0, 0, 0, 0, 544, 156)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_lqyfb"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 569, 156, 0, 0, 0, 0, 659, 499)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_vi6ng"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 684, 495, 0, 0, 0, 0, 771, 155)
+}
+point_count = 2
+
+[node name="Letter" instance=ExtResource("1_y72py")]
+
+[node name="RichTextLabel" parent="." index="1"]
+offset_left = 278.0
+offset_top = -28.0
+offset_right = 978.0
+offset_bottom = 699.0
+text = " [b]W[/b]"
+
+[node name="LetterPath" parent="LetterPaths" index="0" instance=ExtResource("2_dhbaa")]
+curve = SubResource("Curve2D_sk2kq")
+
+[node name="LetterPath2" parent="LetterPaths" index="1" instance=ExtResource("2_dhbaa")]
+curve = SubResource("Curve2D_dhbaa")
+
+[node name="LetterPath3" parent="LetterPaths" index="2" instance=ExtResource("2_dhbaa")]
+curve = SubResource("Curve2D_lqyfb")
+
+[node name="LetterPath4" parent="LetterPaths" index="3" instance=ExtResource("2_dhbaa")]
+curve = SubResource("Curve2D_vi6ng")

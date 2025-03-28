@@ -11,13 +11,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_ckebo"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 352, 137, 0, 0, 0, 0, 351, 483)
+"points": PackedVector2Array(0, 0, 0, 0, 745, 139, 0, 0, 0, 0, 741, 488)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_mqk1x"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 399, 133, -0.476019, -87.2894, 0.476019, 87.2894, 556, 215, -3.07443, 3.5391, 3.07443, -3.5391, 401, 297)
+"points": PackedVector2Array(0, 0, 0, 0, 789, 146, -0.476019, -87.2894, 0.476019, 87.2894, 940, 227, -3.07443, 3.5391, 3.07443, -3.5391, 788, 304)
 }
 point_count = 3
 
@@ -25,7 +25,7 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_kohs7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 405, 298, -0.402629, -99.6262, 0.402629, 99.6262, 559, 395, 0, 0, 0, 0, 399, 487)
+"points": PackedVector2Array(0, 0, 0, 0, 786, 306, -0.402629, -99.6262, 0.402629, 99.6262, 945, 397, 0, 0, 0, 0, 783, 483)
 }
 point_count = 3
 
@@ -46,9 +46,6 @@ offset_right = 1023.0
 offset_bottom = 684.0
 text = "[b]B[/b]"
 
-[node name="LetterPaths" parent="." index="2"]
-position = Vector2(393, 8)
-
 [node name="LetterPath" type="Path2D" parent="LetterPaths" index="0"]
 material = SubResource("ShaderMaterial_0e8a5")
 curve = SubResource("Curve2D_ckebo")
@@ -65,8 +62,8 @@ texture = ExtResource("4_nxb2r")
 
 [node name="PathFollower" type="PathFollow2D" parent="LetterPaths/LetterPath" index="2"]
 visible = false
-position = Vector2(352, 137)
-rotation = 1.57369
+position = Vector2(745, 139)
+rotation = 1.58226
 loop = false
 
 [node name="PathGrabberSprite" type="Sprite2D" parent="LetterPaths/LetterPath/PathFollower" index="0"]
@@ -88,8 +85,8 @@ texture = ExtResource("4_nxb2r")
 
 [node name="PathFollower" type="PathFollow2D" parent="LetterPaths/LetterPath2" index="2"]
 visible = false
-position = Vector2(399, 133)
-rotation = 0.481323
+position = Vector2(789, 146)
+rotation = 0.49236
 loop = false
 
 [node name="PathGrabberSprite" type="Sprite2D" parent="LetterPaths/LetterPath2/PathFollower" index="0"]
@@ -111,8 +108,8 @@ texture = ExtResource("4_nxb2r")
 
 [node name="PathFollower" type="PathFollow2D" parent="LetterPaths/LetterPath3" index="2"]
 visible = false
-position = Vector2(405, 298)
-rotation = 0.562094
+position = Vector2(786, 306)
+rotation = 0.519823
 loop = false
 
 [node name="PathGrabberSprite" type="Sprite2D" parent="LetterPaths/LetterPath3/PathFollower" index="0"]

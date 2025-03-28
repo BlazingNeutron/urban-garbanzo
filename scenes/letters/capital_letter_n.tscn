@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3kek62qpjxqp"]
+
+[ext_resource type="PackedScene" uid="uid://4gktlgtprxfr" path="res://scenes/letter.tscn" id="1_1mcqs"]
+[ext_resource type="PackedScene" uid="uid://ctpin31ahbdpr" path="res://scenes/letter_path.tscn" id="2_w0lu6"]
+
+[sub_resource type="Curve2D" id="Curve2D_cbs57"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 188, 156, 0, 0, 0, 0, 186, 487)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_o2se6"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 212, 152, 0, 0, 0, 0, 426, 495)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_mvadl"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 458, 499, 0, 0, 0, 0, 458, 142)
+}
+point_count = 2
+
+[node name="Letter" instance=ExtResource("1_1mcqs")]
+
+[node name="RichTextLabel" parent="." index="1"]
+offset_left = 92.0
+offset_top = -39.0
+offset_right = 519.0
+offset_bottom = 688.0
+text = "[b]N[/b]"
+
+[node name="LetterPath" parent="LetterPaths" index="0" instance=ExtResource("2_w0lu6")]
+curve = SubResource("Curve2D_cbs57")
+
+[node name="LetterPath2" parent="LetterPaths" index="1" instance=ExtResource("2_w0lu6")]
+curve = SubResource("Curve2D_o2se6")
+
+[node name="LetterPath3" parent="LetterPaths" index="2" instance=ExtResource("2_w0lu6")]
+curve = SubResource("Curve2D_mvadl")

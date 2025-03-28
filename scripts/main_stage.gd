@@ -15,8 +15,23 @@ var letter_list = {
 			{ "scene": "capital_letter_g" },
 			{ "scene": "capital_letter_h" },
 			{ "scene": "capital_letter_i" },
-			{ "scene": "capital_letter_j" }
-			
+			{ "scene": "capital_letter_j" },
+			{ "scene": "capital_letter_k" },
+			{ "scene": "capital_letter_l" },
+			{ "scene": "capital_letter_m" },
+			{ "scene": "capital_letter_n" },
+			{ "scene": "capital_letter_o" },
+			{ "scene": "capital_letter_p" },
+			{ "scene": "capital_letter_q" },
+			{ "scene": "capital_letter_r" },
+			{ "scene": "capital_letter_s" },
+			{ "scene": "capital_letter_t" },
+			{ "scene": "capital_letter_u" },
+			{ "scene": "capital_letter_v" },
+			{ "scene": "capital_letter_w" },
+			{ "scene": "capital_letter_x" },
+			{ "scene": "capital_letter_y" },
+			{ "scene": "capital_letter_z" }
 		]
 }
 
